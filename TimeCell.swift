@@ -14,10 +14,10 @@ class TimeCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label: UILabel!
     
+    private var events = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,]
     
     
-//UITableViewDataSource
-        
+    //UITableViewDataSource
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
             
@@ -26,13 +26,12 @@ class TimeCell: UICollectionViewCell {
         }
         
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 2
+            return events.count
         }
     
     
     
-//UITableViewDelegate
-        
+        //UITableViewDelegate
         func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
             
         }

@@ -13,7 +13,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: EventsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

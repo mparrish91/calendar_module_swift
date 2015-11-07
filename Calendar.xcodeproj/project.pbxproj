@@ -123,8 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				E19BC53A1BE9B50900A1ABA9 /* CalendarViewController.swift */,
-				E164AE061BE89427007D83AA /* AppDelegate.swift */,
 				E164AE0A1BE89427007D83AA /* Main.storyboard */,
+				E164AE061BE89427007D83AA /* AppDelegate.swift */,
 				E164AE0D1BE89427007D83AA /* Assets.xcassets */,
 				E164AE0F1BE89427007D83AA /* LaunchScreen.storyboard */,
 				E164AE121BE89427007D83AA /* Info.plist */,

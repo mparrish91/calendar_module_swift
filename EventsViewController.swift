@@ -12,37 +12,24 @@ import UIKit
 class EventsViewController: UICollectionViewController {
 
     
-private let reuseIdentifier = "TimeCell"
 private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-
-
-
-private var events = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,]
-    
-    
-    
-    
-
+private var timeCell: TimeCell!
 
     //UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return events.count
+        return 1
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! UICollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
         return cell
     }
-
 }
-
-
 
 
 extension EventsViewController : UICollectionViewDelegateFlowLayout {
@@ -58,7 +45,6 @@ extension EventsViewController : UICollectionViewDelegateFlowLayout {
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             return sectionInsets
     }
-    
     
 }
 
