@@ -9,11 +9,13 @@
 import UIKit
 import CVCalendar
 
-class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate {
+class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate , UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
-    @IBOutlet weak var collectionView: EventsViewController!
+    @IBOutlet weak var collectionView: EventsCollectionView!
+    
+    private let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +66,11 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     }
     
     
-    /// I don't think this works as expected
-
+    /// Not working as expected
     @IBAction func onTodayButtonPressed(sender: AnyObject) {
         self.viewDidLoad()
     }
+    
     
     
     // CVCalendar library functions to display calendar and events
@@ -122,5 +124,36 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     }
 
 
+//UICollectionViewDelegateFlowLayout
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 5, height: 5)
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
 }
 
+
+//UICollectionViewDataSource
+     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! UICollectionViewCell
+        cell.backgroundColor = UIColor.blackColor()
+        return cell
+    }
+    
+
+
+
+
+}

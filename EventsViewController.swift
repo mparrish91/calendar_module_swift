@@ -14,6 +14,9 @@ class EventsViewController: UICollectionViewController {
     
 private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 private var timeCell: TimeCell!
+self.collectionView.delegate = self
+self.collectionView.dataSource = self
+    
 
     //UICollectionViewDataSource
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
