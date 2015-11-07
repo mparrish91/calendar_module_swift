@@ -13,23 +13,63 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.title = CVDate(date: NSDate()).globalDescription
     }
     
+    
+    //Update frames for the appearing views
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
     }
+    
+    
+    @IBAction func onBackButtonPressed(sender: AnyObject) {
+        self.calendarView.loadPreviousView()
+    }
+    
+    
+    @IBAction func onForwardButtonPressed(sender: AnyObject) {
+        self.calendarView.loadNextView()
+    }
+    
+    
+    /// Stuck with this - want one button to toggle both ways
+//    @IBAction func toWeekView(sender: AnyObject) {
+//        
+//        if  == MonthView{
+//            calendarView.changeMode(.MonthView)
+//
+//        }else{
+//            calendarView.changeMode(.WeekView)
+//
+//        }
+//    }
+
+    
+    /// Switch to MonthView mode.
+    @IBAction func toMonthView(sender: AnyObject) {
+        calendarView.changeMode(.MonthView)
+    }
+    
+    /// Switch to WeekView mode.
+    @IBAction func toWeekView(sender: AnyObject) {
+        calendarView.changeMode(.WeekView)
+    }
+    
+    
+    /// I don't think this works as expected
+
+    @IBAction func onTodayButtonPressed(sender: AnyObject) {
+        self.viewDidLoad()
+    }
+    
     
     // CVCalendar library functions to display calendar and events
     
@@ -45,25 +85,24 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         return false
     }
     
-    
-    func didSelectDayView(dayView: CVCalendarDayView) {
-        
-    }
-    
-    func presentedDateUpdated(date: CVDate) {
 
+    func presentedDateUpdated(date: CVDate) {
+        self.navigationItem.title = date.globalDescription
     }
+ 
     
     func topMarker(shouldDisplayOnDayView dayView: CVCalendarDayView) -> Bool {
         return false
     }
     
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
+        if dayView.isCurrentDay{
             return true
+        }
+        return false
     }
     
     func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
-        
         let color = UIColor .redColor()
         return [color]
     }
@@ -81,10 +120,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     func shouldAutoSelectDayOnWeekChange() -> Bool {
         return true
     }
-    
-
-
-    
 
 
 }
