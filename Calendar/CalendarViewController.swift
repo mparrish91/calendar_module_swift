@@ -41,28 +41,15 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         self.calendarView.loadNextView()
     }
     
-    
-    /// Stuck with this - want one button to toggle both ways
-//    @IBAction func toWeekView(sender: AnyObject) {
-//        
-//        if  == MonthView{
-//            calendarView.changeMode(.MonthView)
-//
-//        }else{
-//            calendarView.changeMode(.WeekView)
-//
-//        }
-//    }
 
     
-    /// Switch to MonthView mode.
-    @IBAction func toMonthView(sender: AnyObject) {
-        calendarView.changeMode(.MonthView)
-    }
-    
-    /// Switch to WeekView mode.
     @IBAction func toWeekView(sender: AnyObject) {
-        calendarView.changeMode(.WeekView)
+
+        if calendarView.calendarMode == .MonthView{
+                calendarView.changeMode(.WeekView)
+        }else{
+                calendarView.changeMode(.MonthView)
+        }
     }
     
     
@@ -126,7 +113,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 
 //UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 5, height: 5)
+        return CGSize(width: UIScreen.mainScreen().bounds.width, height: 360)
     }
     
     
@@ -147,7 +134,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     }
     
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! CollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
         return cell
     }

@@ -18,6 +18,7 @@
 		E19BC53B1BE9B50900A1ABA9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BC53A1BE9B50900A1ABA9 /* CalendarViewController.swift */; };
 		E19D0C051BEEA65100F5BF10 /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */; };
 		E19D0C071BEEB53B00F5BF10 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */; };
+		E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E19BC53A1BE9B50900A1ABA9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
 		E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */,
+				E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */,
 				E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */,
 				E164AE051BE89427007D83AA /* Calendar */,
 				E164AE1A1BE89427007D83AA /* CalendarTests */,
@@ -343,6 +346,7 @@
 			files = (
 				E19D0C051BEEA65100F5BF10 /* EventsCollectionView.swift in Sources */,
 				E19BC53B1BE9B50900A1ABA9 /* CalendarViewController.swift in Sources */,
+				E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */,
 				E19D0C071BEEB53B00F5BF10 /* CollectionViewCell.swift in Sources */,
 				E164AE071BE89427007D83AA /* AppDelegate.swift in Sources */,
 			);
