@@ -52,10 +52,15 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        self.collectionView.reloadData()
+    }
     
     /// Not working as expected
     @IBAction func onTodayButtonPressed(sender: AnyObject) {
-        self.viewDidLoad()
+//        self.viewDidLoad()
+        self.calendarView.toggleCurrentDayView()
+        
     }
     
     
@@ -113,7 +118,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 
 //UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: UIScreen.mainScreen().bounds.width, height: 360)
+        return CGSize(width: collectionView.frame.width,height: collectionView.frame.height)//CGSize(width: UIScreen.mainScreen().bounds.width, height: 360)
     }
     
     

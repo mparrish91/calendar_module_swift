@@ -33,8 +33,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5zU-am-z45">
                                 <rect key="frame" x="0.0" y="303" width="600" height="297"/>
                                 <animations/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="297" id="b9Q-om-8fb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="297" id="b9Q-om-8fb"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CnX-Ko-Afa">
                                     <size key="itemSize" width="600" height="297"/>
@@ -85,7 +86,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <animations/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Oa8-fj-gYL" secondAttribute="bottom" id="9nQ-DX-Cjv"/>
                                             <constraint firstAttribute="trailing" secondItem="Oa8-fj-gYL" secondAttribute="trailing" id="BF7-rE-c6R"/>
@@ -107,6 +108,9 @@
                                 <rect key="frame" x="0.0" y="98" width="600" height="205"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="ppi-M7-tuk"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="calendarDelegate" destination="BYZ-38-t0r" id="8kz-Xt-eQ9"/>
                                 </connections>
