@@ -51,15 +51,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oa8-fj-gYL">
-                                                    <rect key="frame" x="1" y="-8" width="600" height="390"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="600" height="297"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="390" id="Yh8-US-iJj"/>
+                                                        <constraint firstAttribute="height" constant="270" id="u4J-pc-GXx"/>
                                                     </constraints>
                                                     <inset key="separatorInset" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8wx-Py-nGe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="610" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -68,10 +68,10 @@
                                                     </label>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="WJQ-LF-rcp" customClass="CustomCell" customModule="Calendar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="72" width="610" height="44"/>
+                                                            <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WJQ-LF-rcp" id="rIf-Bl-87c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="610" height="43"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <animations/>
                                                             </tableViewCellContentView>
@@ -91,6 +91,7 @@
                                         <size key="customSize" width="600" height="295"/>
                                         <connections>
                                             <outlet property="tableView" destination="Oa8-fj-gYL" id="IwB-5G-gZ2"/>
+                                            <outlet property="tableViewHeight" destination="u4J-pc-GXx" id="nV0-cj-ZOX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

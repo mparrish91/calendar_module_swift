@@ -14,8 +14,8 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var collectionView: EventsCollectionView!
+    
 
-    @IBOutlet weak var tableView: UITableView!
     
     private let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
@@ -25,7 +25,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         
         let submit = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "onSubmitButtonPressed")
-        
         submit.tintColor = UIColor.redColor()
         
         let toolbar = UIToolbar()
@@ -33,11 +32,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         toolbar.sizeToFit()
         toolbar.setItems([submit], animated: true)
         self.view.addSubview(toolbar)
-
-        
-
-        
-        
     }
     
     
