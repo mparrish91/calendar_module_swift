@@ -14,12 +14,30 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var collectionView: EventsCollectionView!
+
+    @IBOutlet weak var tableView: UITableView!
     
     private let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = CVDate(date: NSDate()).globalDescription
+        
+        
+        let submit = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "onSubmitButtonPressed")
+        
+        submit.tintColor = UIColor.redColor()
+        
+        let toolbar = UIToolbar()
+        toolbar.frame = CGRectMake(0, self.view.frame.size.height - 46, self.view.frame.size.width, 46)
+        toolbar.sizeToFit()
+        toolbar.setItems([submit], animated: true)
+        self.view.addSubview(toolbar)
+
+        
+
+        
+        
     }
     
     
@@ -140,7 +158,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! CollectionViewCell
-        cell.backgroundColor = UIColor.blackColor()
         return cell
     }
     
