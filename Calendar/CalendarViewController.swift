@@ -25,12 +25,15 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         
         let submit = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "onSubmitButtonPressed")
+        let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         submit.tintColor = UIColor.redColor()
         
         let toolbar = UIToolbar()
         toolbar.frame = CGRectMake(0, self.view.frame.size.height - 46, self.view.frame.size.width, 46)
         toolbar.sizeToFit()
-        toolbar.setItems([submit], animated: true)
+        
+        
+        toolbar.setItems([flex,submit], animated: true)
         self.view.addSubview(toolbar)
     }
     
@@ -58,10 +61,12 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBAction func toWeekView(sender: AnyObject) {
 
         if calendarView.calendarMode == .MonthView{
+            
                 calendarView.changeMode(.WeekView)
         }else{
                 calendarView.changeMode(.MonthView)
         }
+        collectionView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -94,6 +99,10 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 
     func presentedDateUpdated(date: CVDate) {
         self.navigationItem.title = date.globalDescription
+        print(date.commonDescription)
+        
+        //load a different collectionview
+        
     }
  
     
@@ -126,6 +135,8 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     func shouldAutoSelectDayOnWeekChange() -> Bool {
         return true
     }
+    
+ 
 
 
 //UICollectionViewDelegateFlowLayout
@@ -152,6 +163,16 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! CollectionViewCell
+        
+        if calendarView.calendarMode == .MonthView{
+            
+          cell.tableViewHeight.constant = 360
+        }else{
+            cell.tableViewHeight.constant = 500
+        }
+        
+        
+        
         return cell
     }
     
