@@ -15,9 +15,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var collectionView: EventsCollectionView!
     
-
-    
-    private let sectionInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +100,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         print(date.commonDescription)
         
         //load a different collectionview
-        
     }
  
     
@@ -141,7 +138,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 
 //UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width,height: collectionView.frame.height)//CGSize(width: UIScreen.mainScreen().bounds.width, height: 360)
+        return CGSize(width: collectionView.frame.width,height: collectionView.frame.height)
     }
     
     
@@ -166,18 +163,11 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         if calendarView.calendarMode == .MonthView{
             
-          cell.tableViewHeight.constant = 360
+          cell.tableViewHeight.constant = 390
         }else{
             cell.tableViewHeight.constant = 500
         }
         
-        
-        
         return cell
     }
-    
-
-
-
-
 }

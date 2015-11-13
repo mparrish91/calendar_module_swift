@@ -28,6 +28,5 @@ class CustomCell: UITableViewCell {
         var currentFrame = textLabel?.frame
         textLabel?.frame = CGRectMake(10, -15, (textLabel?.frame.width)!, (textLabel?.frame.height)!)
         
-        
     }
 }
