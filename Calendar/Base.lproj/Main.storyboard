@@ -79,8 +79,8 @@
                                                         </tableViewCell>
                                                     </prototypes>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="KQD-OI-pOu" id="Zdt-jr-PiN"/>
-                                                        <outlet property="delegate" destination="KQD-OI-pOu" id="VOt-NW-N6J"/>
+                                                        <outlet property="dataSource" destination="BYZ-38-t0r" id="rA9-bU-3VC"/>
+                                                        <outlet property="delegate" destination="BYZ-38-t0r" id="sB5-y1-osS"/>
                                                     </connections>
                                                 </tableView>
                                             </subviews>
@@ -89,10 +89,6 @@
                                         </view>
                                         <animations/>
                                         <size key="customSize" width="600" height="295"/>
-                                        <connections>
-                                            <outlet property="tableView" destination="Oa8-fj-gYL" id="IwB-5G-gZ2"/>
-                                            <outlet property="tableViewHeight" destination="u4J-pc-GXx" id="nV0-cj-ZOX"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -161,6 +157,7 @@
                         <outlet property="calendarView" destination="qE0-lT-1gm" id="yrL-5d-ghR"/>
                         <outlet property="collectionView" destination="5zU-am-z45" id="lyn-dl-FES"/>
                         <outlet property="menuView" destination="l3r-bc-aLM" id="DWa-2F-OTI"/>
+                        <outlet property="newTableViewHeight" destination="b9Q-om-8fb" id="vYb-gQ-aaY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
