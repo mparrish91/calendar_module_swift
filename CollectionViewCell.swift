@@ -10,10 +10,6 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-
-
-
-
     
     override func layoutSubviews() {
 

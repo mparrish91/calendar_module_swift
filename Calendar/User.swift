@@ -11,12 +11,8 @@ import Foundation
 class User:NSObject {
     
     //MARK: Properties
-    var event: String?
-    var arrayOfEvents: [String]?
-
-    var eventsInADayArray: [String]?
-
-//    var monthsOfYear: [String:[Dates]]?
+    var name: String?
     
-
+    var yearArray:[Year]?
+    
 }

@@ -16,7 +16,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBOutlet weak var collectionView: EventsCollectionView!
     @IBOutlet weak var newTableViewHeight: NSLayoutConstraint!
     
-//    var tableView:UITableView!
     var lastSelectedIndex:Int?
     var recentlySelectedIndex:Int?
     
@@ -110,13 +109,14 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         print(date.day)
         print(date.hashValue)
         print(date.week)
+        print(date.year)
+
 
         let indexPath1 = NSIndexPath(forRow: 0, inSection: 0)
         
         //load tableview
 //        let cell = collectionView.cellForItemAtIndexPath(indexPath1) as! CollectionViewCell
 //        
-//        cell.tableView.reloadData()
         
         
 //        cell.tableView.textLabel?.text = String("Yolo")
@@ -205,12 +205,35 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let user1 = User()
+        user1.name = "Mike"
+        user1.yearArray = [Year(term: 2015)!,Year(term: 2016)!]
+        
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         
-        cell.textLabel?.text = String(times[indexPath.row])
+//        cell.textLabel?.text = String(times[indexPath.row])
+        
+        cell.textLabel?.text = String(user1.yearArray![0].monthArray![0].dayArray[0].times[indexPath.row])
         cell.textLabel?.backgroundColor = UIColor.clearColor()
         cell.textLabel?.textColor = UIColor.lightGrayColor()
         cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 15)
+        
+        
+       
+        print(user1.yearArray![0].monthArray![0].name)
+        
+        
+        
+        //initialize a calendarDictionary
+        //call addSelectedCellsArrayToDictionary      -sets the Day model property
+        
+        //call selectedCells Function and pass in presented Date  - month, date, year
+        //return an array of selected cells index
+        //loop through that array and set the selected cells to that
+        
+        
+        //event its own property 
         
         var bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)

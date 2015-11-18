@@ -22,6 +22,9 @@
 		E19D0C051BEEA65100F5BF10 /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */; };
 		E19D0C071BEEB53B00F5BF10 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */; };
 		E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */; };
+		E1AE733A1BFB9C9300A2582D /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE73391BFB9C9300A2582D /* Year.swift */; };
+		E1AE733C1BFB9C9D00A2582D /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE733B1BFB9C9D00A2582D /* Month.swift */; };
+		E1AE733E1BFB9CA400A2582D /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE733D1BFB9CA400A2582D /* Day.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
 		E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		E1AE73391BFB9C9300A2582D /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		E1AE733B1BFB9C9D00A2582D /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		E1AE733D1BFB9CA400A2582D /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				E19D0C061BEEB53B00F5BF10 /* CollectionViewCell.swift */,
-				E116655E1BF453EE00AFCFAA /* Event.swift */,
 				E16A0FC61BF7B174009392F2 /* User.swift */,
+				E1AE73391BFB9C9300A2582D /* Year.swift */,
+				E1AE733B1BFB9C9D00A2582D /* Month.swift */,
+				E1AE733D1BFB9CA400A2582D /* Day.swift */,
+				E116655E1BF453EE00AFCFAA /* Event.swift */,
 				E16A0FC81BF7BA48009392F2 /* InstanceData.swift */,
 				E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */,
 				E19D0C041BEEA65100F5BF10 /* EventsCollectionView.swift */,
@@ -358,9 +367,12 @@
 				E19D0C051BEEA65100F5BF10 /* EventsCollectionView.swift in Sources */,
 				E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */,
 				E19D0C071BEEB53B00F5BF10 /* CollectionViewCell.swift in Sources */,
+				E1AE733E1BFB9CA400A2582D /* Day.swift in Sources */,
+				E1AE733A1BFB9C9300A2582D /* Year.swift in Sources */,
 				E16A0FC91BF7BA48009392F2 /* InstanceData.swift in Sources */,
 				E116655F1BF453EF00AFCFAA /* Event.swift in Sources */,
 				E164AE071BE89427007D83AA /* AppDelegate.swift in Sources */,
+				E1AE733C1BFB9C9D00A2582D /* Month.swift in Sources */,
 				E16A0FC71BF7B174009392F2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
