@@ -11,9 +11,10 @@ import Foundation
 class Month:NSObject {
     
     //MARK: Properties
-    var dayArray = []
+    var dayArray: [Day!]?
     var name: String?
     
+
 
     init?(name: String) {
         self.name = name
