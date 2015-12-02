@@ -12,10 +12,10 @@ Screenshots
 ==========
 
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/mparrish91/Calendar/master/Screenshots/screenshot.png" />
+  <img src ="https://raw.githubusercontent.com/mparrish91/calendar_module_swift/master/Screenshots/screenshot.png" />
 </p>
 
 
-Thank you.
+
 ==========
   
