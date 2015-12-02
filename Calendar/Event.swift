@@ -7,14 +7,29 @@
 //
 
 import Foundation
+import Parse
 
+class Event:PFObject, PFSubclassing {
+    
+    @NSManaged var startDate : NSDate
+    @NSManaged var endDate : NSDate
 
-class Event:NSObject {
+    @NSManaged var user : User!
     
-    var index: Int?
-    
-    init?(index: Int) {
-        self.index = index
+    static func parseClassName() -> String {
+        return "Event"
     }
-
+    
+    override class func initialize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
 }
+
+//implement Parse
+// use PFSubclassing

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+    Parse.setApplicationId("XMSeVlOCmjNF4EoWNYkHpxGbE99hTwBYSkJE5e9X",
+            clientKey: "DO1NGnpTinEeScODPHZJJ7AWAy4oSSL9kKrgJvrU")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         // Override point for customization after application launch.
         
 //        let colorView = UIView()

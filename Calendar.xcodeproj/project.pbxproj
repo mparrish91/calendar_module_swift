@@ -172,14 +172,22 @@
 		E1AE73451BFD1E6B00A2582D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1FE0AE31C0F5CC100CDA1CA /* Delete These */,
 				E16A0FC61BF7B174009392F2 /* User.swift */,
+				E168593C1C014F35006F971E /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E1FE0AE31C0F5CC100CDA1CA /* Delete These */ = {
+			isa = PBXGroup;
+			children = (
 				E1AE73391BFB9C9300A2582D /* Year.swift */,
 				E1AE733B1BFB9C9D00A2582D /* Month.swift */,
 				E1AE733D1BFB9CA400A2582D /* Day.swift */,
-				E168593C1C014F35006F971E /* Event.swift */,
 				E1AE73411BFC157600A2582D /* Cell.swift */,
 			);
-			name = Model;
+			name = "Delete These";
 			sourceTree = "<group>";
 		};
 		E216AD249FA4C44F79EA57FD /* Frameworks */ = {
@@ -533,6 +541,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Calendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -552,6 +561,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Calendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

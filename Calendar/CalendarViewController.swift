@@ -21,11 +21,12 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     var selectedIndexs:[Int]?
     var presentDate:CVDate?
     var myEvent:String?
-    let user1 = User()
     var day = CVDate(date: NSDate())
     var presentDateNS:String?
     
     var events = [NSManagedObject]()
+    
+    var timesForDay : [String] = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30"]
 
     
     var lastSelectedIndex:Int?
@@ -56,8 +57,18 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         self.view.addSubview(toolbar)
     
         
-        user1.name = "Mike"
-        user1.yearArray = [Year(term: 2015)!,Year(term: 2016)!]
+        //If you need to create another user
+
+//        var user1 = User()
+//        user1.username = "mike"
+//        user1.password = "abcdefg"
+//        user1.signUpInBackgroundWithBlock { (success, error) -> Void in
+//            print("sign up: \(success)")
+//        }
+
+        
+        
+//        user1.yearArray = [Year(term: 2015)!,Year(term: 2016)!]
         
 //        view.addGestureRecognizer(leftSwipe)
 //        view.addGestureRecognizer(rightSwipe)
@@ -126,7 +137,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         self.presentDate = date
         self.navigationItem.title = date.globalDescription
         
-        day = CVDate(day: (presentDate?.day)!, month: (presentDate?.month)!, week: (presentDate?.week)!, year: (presentDate?.year)!)
+       
         
         //Convert to shortstyle NSDate
         let convertedDate = date.convertedDate()
@@ -246,7 +257,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         self.tableView = cell.tableView
         
-        cell.textLabel!.text = String(user1.yearArray![0].monthArray![0].dayArray![0].cellArray![indexPath.row].time!)
+        cell.textLabel!.text = self.timesForDay[indexPath.row]
         
         cell.textLabel?.backgroundColor = UIColor.clearColor()
         cell.textLabel?.textColor = UIColor.lightGrayColor()
@@ -263,7 +274,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user1.yearArray![0].monthArray![0].dayArray![0].cellArray!.count
+        return self.timesForDay.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
