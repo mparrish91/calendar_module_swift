@@ -39,6 +39,7 @@
 		C68D88393AB99D8587329B61229CAA10 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97622CAB66BD38FF2C5DC689C8BC290F /* CVCalendarContentViewController.swift */; };
 		C8F505E2C3284B4BA389F0B4C7377A12 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2EF512D0E24055A4C25847F3781AE /* CVCalendarDayView.swift */; };
 		D9A86BFF9617EE2BAF83EA6D36B50B96 /* CVCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B86B6004DBC82C835E565E16B09C7CE8 /* CVCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E168593F1C0154B4006F971E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168593E1C0154B4006F971E /* Event.swift */; };
 		F809213B24C125C576D1A8D28D242A4F /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C3E6B3CCD1DB725F4A9A55C657CFE /* CVCalendarViewAppearance.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		E110F1A35F45E58D9A40BAAEC2972096 /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarWeekContentViewController.swift; path = CVCalendar/CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
+		E168593E1C0154B4006F971E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E3A8BB46CAF2E5F339CA7468CC27DA27 /* CVCalendarViewAnimatorDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarViewAnimatorDelegate.swift; path = CVCalendar/CVCalendarViewAnimatorDelegate.swift; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		28F66972FB7A55FC546F2C6D4BB5FCF9 /* CVCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				E168593E1C0154B4006F971E /* Event.swift */,
 				3A78F6E66ECEB3CF9836087724D4FB8E /* CVAuxiliaryView.swift */,
 				97622CAB66BD38FF2C5DC689C8BC290F /* CVCalendarContentViewController.swift */,
 				7CE2EF512D0E24055A4C25847F3781AE /* CVCalendarDayView.swift */,
@@ -357,6 +360,7 @@
 				4E4F17DE924825CE5D480D0E8A05E3CD /* CVCalendarViewDelegate.swift in Sources */,
 				6637B96C6BD4B5532AA3B69133DE4055 /* CVCalendarViewPresentationMode.swift in Sources */,
 				9F596692858960FCDD3C7E648896FCFF /* CVCalendarWeekContentViewController.swift in Sources */,
+				E168593F1C0154B4006F971E /* Event.swift in Sources */,
 				5E4E07F5AA458FA65DF01816F721468A /* CVCalendarWeekday.swift in Sources */,
 				57A71A8F4D5FCC79FE401287E197E7B3 /* CVCalendarWeekView.swift in Sources */,
 				551E9EE718FB2628ECBA3954D837BCE5 /* CVDate.swift in Sources */,

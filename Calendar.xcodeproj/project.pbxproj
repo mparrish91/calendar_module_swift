@@ -14,10 +14,13 @@
 		E164AE111BE89427007D83AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E164AE0F1BE89427007D83AA /* LaunchScreen.storyboard */; };
 		E164AE1C1BE89427007D83AA /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E164AE1B1BE89427007D83AA /* CalendarTests.swift */; };
 		E164AE271BE89427007D83AA /* CalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E164AE261BE89427007D83AA /* CalendarUITests.swift */; };
+		E168593D1C014F35006F971E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168593C1C014F35006F971E /* Event.swift */; };
 		E16A0FC71BF7B174009392F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A0FC61BF7B174009392F2 /* User.swift */; };
 		E16A0FCB1BF9B3D4009392F2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16A0FCA1BF9B3D4009392F2 /* CalendarViewController.swift */; };
+		E18F86FE1C0EA8EC005DC1A0 /* ColllectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F86FD1C0EA8EC005DC1A0 /* ColllectionViewCell.swift */; };
 		E19BC5391BE9399400A1ABA9 /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19BC5381BE9399400A1ABA9 /* CVCalendar.framework */; };
 		E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */; };
+		E1A278641C07919000983D1E /* Calendar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1A278621C07919000983D1E /* Calendar.xcdatamodeld */; };
 		E1AE733A1BFB9C9300A2582D /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE73391BFB9C9300A2582D /* Year.swift */; };
 		E1AE733C1BFB9C9D00A2582D /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE733B1BFB9C9D00A2582D /* Month.swift */; };
 		E1AE733E1BFB9CA400A2582D /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE733D1BFB9CA400A2582D /* Day.swift */; };
@@ -58,10 +61,13 @@
 		E164AE221BE89427007D83AA /* CalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E164AE261BE89427007D83AA /* CalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUITests.swift; sourceTree = "<group>"; };
 		E164AE281BE89427007D83AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E168593C1C014F35006F971E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Calendar/Event.swift; sourceTree = "<group>"; };
 		E16A0FC61BF7B174009392F2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Calendar/User.swift; sourceTree = "<group>"; };
 		E16A0FCA1BF9B3D4009392F2 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		E18F86FD1C0EA8EC005DC1A0 /* ColllectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColllectionViewCell.swift; sourceTree = "<group>"; };
 		E19BC5381BE9399400A1ABA9 /* CVCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CVCalendar.framework; path = "Pods/../build/Release-iphoneos/CVCalendar.framework"; sourceTree = "<group>"; };
 		E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		E1A278631C07919000983D1E /* Calendar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calendar.xcdatamodel; sourceTree = "<group>"; };
 		E1AE73391BFB9C9300A2582D /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
 		E1AE733B1BFB9C9D00A2582D /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		E1AE733D1BFB9CA400A2582D /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -108,8 +114,10 @@
 		E164ADFA1BE89427007D83AA = {
 			isa = PBXGroup;
 			children = (
+				E1A278621C07919000983D1E /* Calendar.xcdatamodeld */,
 				E1AE73451BFD1E6B00A2582D /* Model */,
 				E19D0C0A1BF1215100F5BF10 /* CustomCell.swift */,
+				E18F86FD1C0EA8EC005DC1A0 /* ColllectionViewCell.swift */,
 				E164AE051BE89427007D83AA /* Calendar */,
 				E164AE1A1BE89427007D83AA /* CalendarTests */,
 				E164AE251BE89427007D83AA /* CalendarUITests */,
@@ -168,6 +176,7 @@
 				E1AE73391BFB9C9300A2582D /* Year.swift */,
 				E1AE733B1BFB9C9D00A2582D /* Month.swift */,
 				E1AE733D1BFB9CA400A2582D /* Day.swift */,
+				E168593C1C014F35006F971E /* Event.swift */,
 				E1AE73411BFC157600A2582D /* Cell.swift */,
 			);
 			name = Model;
@@ -368,11 +377,14 @@
 				E16A0FCB1BF9B3D4009392F2 /* CalendarViewController.swift in Sources */,
 				E19D0C0B1BF1215100F5BF10 /* CustomCell.swift in Sources */,
 				E1AE73441BFD18B000A2582D /* UITableViewCellExtension.swift in Sources */,
+				E18F86FE1C0EA8EC005DC1A0 /* ColllectionViewCell.swift in Sources */,
 				E1AE733E1BFB9CA400A2582D /* Day.swift in Sources */,
+				E168593D1C014F35006F971E /* Event.swift in Sources */,
 				E1AE73421BFC157600A2582D /* Cell.swift in Sources */,
 				E1AE733A1BFB9C9300A2582D /* Year.swift in Sources */,
 				E164AE071BE89427007D83AA /* AppDelegate.swift in Sources */,
 				E1AE733C1BFB9C9D00A2582D /* Month.swift in Sources */,
+				E1A278641C07919000983D1E /* Calendar.xcdatamodeld in Sources */,
 				E16A0FC71BF7B174009392F2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +649,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E1A278621C07919000983D1E /* Calendar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E1A278631C07919000983D1E /* Calendar.xcdatamodel */,
+			);
+			currentVersion = E1A278631C07919000983D1E /* Calendar.xcdatamodel */;
+			path = Calendar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E164ADFB1BE89427007D83AA /* Project object */;
 }

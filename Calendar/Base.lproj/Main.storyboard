@@ -43,7 +43,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimeCell" id="KQD-OI-pOu">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimeCell" id="KQD-OI-pOu" customClass="CollectionViewCell" customModule="Calendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="600" height="295"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -89,6 +89,9 @@
                                         </view>
                                         <animations/>
                                         <size key="customSize" width="600" height="295"/>
+                                        <connections>
+                                            <outlet property="newTableViewHeight" destination="u4J-pc-GXx" id="ePI-HG-sCI"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -157,7 +160,6 @@
                         <outlet property="calendarView" destination="qE0-lT-1gm" id="yrL-5d-ghR"/>
                         <outlet property="collectionView" destination="5zU-am-z45" id="lyn-dl-FES"/>
                         <outlet property="menuView" destination="l3r-bc-aLM" id="DWa-2F-OTI"/>
-                        <outlet property="newTableViewHeight" destination="b9Q-om-8fb" id="vYb-gQ-aaY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

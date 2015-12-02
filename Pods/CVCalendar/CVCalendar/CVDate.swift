@@ -15,6 +15,8 @@ public final class CVDate: NSObject {
     public let month: Int
     public let week: Int
     public let day: Int
+    public var selectionsArray:[NSIndexPath]
+    
     
    public init(date: NSDate) {
         let dateRange = Manager.dateRange(date)
@@ -24,7 +26,9 @@ public final class CVDate: NSObject {
         self.month = dateRange.month
         self.week = dateRange.weekOfMonth
         self.day = dateRange.day
-        
+        self.selectionsArray = []
+
+    
         super.init()
     }
     
@@ -39,6 +43,8 @@ public final class CVDate: NSObject {
         self.month = month
         self.week = week
         self.day = day
+        self.selectionsArray = []
+
         
         super.init()
     }

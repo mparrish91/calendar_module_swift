@@ -8,20 +8,26 @@
 
 import UIKit
 import CVCalendar
+import CoreData
 
 class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate , CVCalendarViewAppearanceDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var newTableViewHeight: NSLayoutConstraint!
+
     
     var tableView:UITableView?
     var selectedIndexs:[Int]?
     var presentDate:CVDate?
+    var myEvent:String?
     let user1 = User()
+    var day = CVDate(date: NSDate())
+    var presentDateNS:String?
+    
+    var events = [NSManagedObject]()
 
-
+    
     var lastSelectedIndex:Int?
     var recentlySelectedIndex:Int?
     
@@ -29,6 +35,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     var rows:[Int]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +57,10 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
         
         user1.name = "Mike"
-        year0 = Year(term: 2015)!
-        
-        
         user1.yearArray = [Year(term: 2015)!,Year(term: 2016)!]
+        
+//        view.addGestureRecognizer(leftSwipe)
+//        view.addGestureRecognizer(rightSwipe)
     }
     
     
@@ -92,12 +99,12 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         self.collectionView.reloadData()
     }
     
+
     /// Not working as expected
     @IBAction func onTodayButtonPressed(sender: AnyObject) {
 //        self.viewDidLoad()
         self.calendarView.toggleCurrentDayView()
     }
-    
     
     
     // CVCalendar library functions to display calendar and events
@@ -119,8 +126,17 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         self.presentDate = date
         self.navigationItem.title = date.globalDescription
         
-        //reload tableview
+        day = CVDate(day: (presentDate?.day)!, month: (presentDate?.month)!, week: (presentDate?.week)!, year: (presentDate?.year)!)
         
+        //Convert to shortstyle NSDate
+        let convertedDate = date.convertedDate()
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        print(formatter.stringFromDate(convertedDate!))
+        presentDateNS = formatter.stringFromDate(convertedDate!)
+        
+        
+        self.tableView?.reloadData()
     }
  
     
@@ -202,18 +218,24 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     }
     
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! CollectionViewCell
         
 
-//        if calendarView.calendarMode == .MonthView{
+        if calendarView.calendarMode == .MonthView{
         
 //          cell.tableViewHeight.constant = 390
-//        }else{
+             cell.newTableViewHeight.constant = 390
+          
+        }else{
 //            cell.tableViewHeight.constant = 500
-//        }
-        
+            cell.newTableViewHeight.constant = 600
+
+        }
+//
         return cell
     }
+    
+    
     
     
     //UITableViewDataSource
@@ -226,38 +248,22 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         cell.textLabel!.text = String(user1.yearArray![0].monthArray![0].dayArray![0].cellArray![indexPath.row].time!)
         
-        
         cell.textLabel?.backgroundColor = UIColor.clearColor()
         cell.textLabel?.textColor = UIColor.lightGrayColor()
         cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 15)
         
         
-        //load from the data source
-        
-        print(user1.yearArray![(self.presentDate?.year)!].monthArray![(self.presentDate?.month)!].dayArray![(self.presentDate?.day)!].selectedArray)
-        self.selectedIndexs = user1.yearArray![(self.presentDate?.year)!].monthArray![(self.presentDate?.month)!].dayArray![(self.presentDate?.day)!].selectedArray
-        
-        if let found = find(user1.yearArray.map({ $0.name }), ) {
-            let obj = array[found]
-        }
-        
-        
-        for index in selectedIndexs!{
-            if index == indexPath.row{
-                cell.selected = true
-            }
-        }
-        
-        
         var bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
         cell.selectedBackgroundView = bgColorView
+        
+        
         return cell
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return times.count
+        return user1.yearArray![0].monthArray![0].dayArray![0].cellArray!.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -270,6 +276,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print(indexPath.row)
         
+        
         if indexPath == 47{
             tableView.selectRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section), animated: false, scrollPosition: UITableViewScrollPosition.None)
             
@@ -280,6 +287,13 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 //        selectedIndexs?.append(indexPath)
         updateCount(tableView)
         
+//        let selectedRows = tableView.indexPathsForSelectedRows
+//        for i:NSIndexPath in selectedRows! {
+//            if i.isEqual(indexPath) {
+//                tableView.deselectRowAtIndexPath(indexPath, animated: false)
+//            }
+//        }
+        
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -288,6 +302,33 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         updateCount(tableView)
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if cell.selected {
+////            cell.selected = true
+//        } else {
+////            cell.selected = true
+//        }
+//        
+//        if indexPath.row == 1 {
+//            cell.selected = true
+//        }
+//        
+        
+//        load from the data source
+        
+        if cell.textLabel!.text == "01:00" {
+            cell.selected = true
+        }
+
+//        if (myEvent != nil){
+//            for index in (day.selectionsArray){
+//                if indexPath.row == index.row{
+//                    cell.selected = true
+//
+//                }
+//                }
+//        }
+    }
     
     
     func updateCount(tableView:UITableView){
@@ -298,19 +339,54 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     
 func onSubmitButtonPressed(sender: AnyObject) {
-        let currentDate = NSDate()
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        let convertedDate = dateFormatter.stringFromDate(currentDate)
-        
         let rows = self.tableView!.indexPathsForSelectedRows!.map{$0.row}
+//        let rows = tableView!.indexPathsForSelectedRows
+        print(rows)
+
+//        //set that datasource
+//        presentDate?.selectionsArray = rows!
+//        day = CVDate(day: (presentDate?.day)!, month: (presentDate?.month)!, week: (presentDate?.week)!, year: (presentDate?.year)!)
+//        day.selectionsArray = rows!
+//    
     
     
-        //set that datasource
-        user1.yearArray![(self.presentDate?.year)!].monthArray![(self.presentDate?.month)!].dayArray![(self.presentDate?.day)!].selectedArray = rows
+        myEvent = "String"
     
+        self.tableView?.reloadData()
 
 }
+//    
+//    func handleSwipes(sender:UISwipeGestureRecognizer) {
+//        if (sender.direction == .Left) {
+//            
+////            self.calendarView.toggleViewWithDate(CVCalendarDayView.date)
+//        }
+//        
+//        if (sender.direction == .Right) {
+//      
+//        }
+//    }
+//    
+//    
+//    func daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
+//    {
+//        let calendar = NSCalendar.currentCalendar()
+//        
+//        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+//        
+//        return components.day
+//        
+//        
+//        var today:NSDate = NSDate()
+//        let calender:NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+//        var components:NSDateComponents = NSDateComponents()
+//        components.setValue(1, forComponent: NSCalendarUnit.CalendarUnitDay)
+//        var newDate:NSDate! = calender.dateByAddingComponents(components, toDate:today, options: NSCalendarOptions(0))
+//        
+//        print(newDate)
+//    }
+    
+    
 }
 
 
