@@ -10,7 +10,7 @@ import UIKit
 import CVCalendar
 import CoreData
 
-class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate , CVCalendarViewAppearanceDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate , CVCalendarViewAppearanceDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -204,51 +204,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         return color
     }
     
-    
-
-//UICollectionViewDelegateFlowLayout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width,height: collectionView.frame.height)
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return sectionInsets
-}
-
-
-//UICollectionViewDataSource
-     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimeCell", forIndexPath: indexPath) as! CollectionViewCell
-        
-
-        if calendarView.calendarMode == .MonthView{
-        
-//          cell.tableViewHeight.constant = 390
-             cell.newTableViewHeight.constant = 390
-          
-        }else{
-//            cell.tableViewHeight.constant = 500
-            cell.newTableViewHeight.constant = 600
-
-        }
-//
-        return cell
-    }
-    
-    
-    
-    
+       
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
