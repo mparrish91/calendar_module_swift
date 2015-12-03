@@ -103,11 +103,9 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         }else{
                 calendarView.changeMode(.MonthView)
         }
-        collectionView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
-        self.collectionView.reloadData()
     }
     
 
@@ -204,13 +202,13 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         return color
     }
     
-       
+    
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         self.tableView = cell.tableView
         
         cell.textLabel!.text = self.timesForDay[indexPath.row]
