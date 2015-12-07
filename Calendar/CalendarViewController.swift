@@ -19,10 +19,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     var tableView:UITableView?
     var selectedIndexs:[Int]?
-    var presentDate:CVDate?
-    var myEvent:String?
-    var day = CVDate(date: NSDate())
-    var presentDateNS:String?
+    var presentDate:NSDate?
     
     var events = [NSManagedObject]()
     
@@ -32,11 +29,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     var lastSelectedIndex:Int?
     var recentlySelectedIndex:Int?
     
-    
-    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    
-    var rows:[Int]?
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,23 +48,20 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         toolbar.setItems([flex,submit], animated: true)
         self.view.addSubview(toolbar)
+        
+        //        view.addGestureRecognizer(leftSwipe)
+        //        view.addGestureRecognizer(rightSwipe)
     
         
-        //If you need to create another user
-
-//        var user1 = User()
+        //If we need to create another user
+//        let user1 = User()
 //        user1.username = "mike"
 //        user1.password = "abcdefg"
 //        user1.signUpInBackgroundWithBlock { (success, error) -> Void in
 //            print("sign up: \(success)")
-//        }
-
         
-        
-//        user1.yearArray = [Year(term: 2015)!,Year(term: 2016)!]
-        
-//        view.addGestureRecognizer(leftSwipe)
-//        view.addGestureRecognizer(rightSwipe)
+//        //get the current user
+//        let user = User.currentUser()
     }
     
     
@@ -92,7 +82,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     @IBAction func onForwardButtonPressed(sender: AnyObject) {
         self.calendarView.loadNextView()
     }
-    
 
     
     @IBAction func toWeekView(sender: AnyObject) {
@@ -109,9 +98,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     }
     
 
-    /// Not working as expected
     @IBAction func onTodayButtonPressed(sender: AnyObject) {
-//        self.viewDidLoad()
         self.calendarView.toggleCurrentDayView()
     }
     
@@ -132,19 +119,9 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
 
     func presentedDateUpdated(date: CVDate) {
-        self.presentDate = date
+        self.presentDate = date.convertedDate()
         self.navigationItem.title = date.globalDescription
-        
-       
-        
-        //Convert to shortstyle NSDate
-        let convertedDate = date.convertedDate()
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        print(formatter.stringFromDate(convertedDate!))
-        presentDateNS = formatter.stringFromDate(convertedDate!)
-        
-        
+
         self.tableView?.reloadData()
     }
  
@@ -205,8 +182,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         self.tableView = cell.tableView
@@ -217,10 +192,28 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         cell.textLabel?.textColor = UIColor.lightGrayColor()
         cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 15)
         
+        let user = User.currentUser()
         
+        //testing
         var bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
         cell.selectedBackgroundView = bgColorView
+        cell.selected = true
+        
+        
+        User.currentUser()!.refreshEvents()
+        let eventsArray = User().eventsForDay(presentDate!)
+        
+        let cellDate = User.getDatesWithTimeForRow(indexPath, date: presentDate!)
+        
+        for Event in eventsArray {
+            if (User.isCellWithinEvent(cellDate, startTime: Event.startTime, endTime: Event.endTime)){
+                var bgColorView = UIView()
+                bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
+                cell.selectedBackgroundView = bgColorView
+                cell.selected = true
+            }
+        }
         
         
         return cell
@@ -234,7 +227,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
     
     
     //UITableViewDelegate
@@ -315,7 +307,6 @@ func onSubmitButtonPressed(sender: AnyObject) {
 //    
     
     
-        myEvent = "String"
     
         self.tableView?.reloadData()
 
