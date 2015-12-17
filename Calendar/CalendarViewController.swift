@@ -9,6 +9,7 @@
 import UIKit
 import CVCalendar
 import CoreData
+import Parse
 
 class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCalendarViewDelegate , CVCalendarViewAppearanceDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -24,7 +25,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
     var events = [NSManagedObject]()
     
     var timesForDay : [String] = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30"]
-
     
     var lastSelectedIndex:Int?
     var recentlySelectedIndex:Int?
@@ -35,7 +35,7 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         super.viewDidLoad()
         
         self.title = CVDate(date: NSDate()).globalDescription
-        self.presentDate = CVDate(date: NSDate())
+        self.presentDate = NSDate()
         
         let submit = UIBarButtonItem(title: "Submit", style: .Plain, target: self, action: "onSubmitButtonPressed:")
         let flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
@@ -48,9 +48,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         
         toolbar.setItems([flex,submit], animated: true)
         self.view.addSubview(toolbar)
-        
-        //        view.addGestureRecognizer(leftSwipe)
-        //        view.addGestureRecognizer(rightSwipe)
     
         
         //If we need to create another user
@@ -60,11 +57,49 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
 //        user1.signUpInBackgroundWithBlock { (success, error) -> Void in
 //            print("sign up: \(success)")
         
-//        //get the current user
-//        let user = User.currentUser()
+        //self.checkUserCredentials()
+        print(self.checkUserCredentials())
+        
+        let user = User.currentUser()
+        user?.name = "Gil"
+            
+        let date = NSDate()
+        let test1 = Event()
+        test1.startDate = date
+        test1.user = user
+            
+        let test2 = Event()
+        test2.user = user
+        
+        
+        let cal: NSCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
+        let newDate = cal.dateBySettingHour(18, minute: 30, second: 0, ofDate: date, options: NSCalendarOptions())!
+        test1.endDate = newDate
+        test1.saveInBackgroundWithBlock{ (success, error) -> Void in
+            print("Event saved: \(success)")
+       
+            
+        let dateString = "2015-12-09"
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = NSTimeZone(name: "US/Pacific")
+        let date = formatter.dateFromString(dateString)
+ 
+        user?.refreshEvents()
+//        print(user?.events)
+//        print(user?.eventsForDay(date!))
+            
+        
+        
+
+
+
+        }
+
     }
-    
-    
+
+
+
     //Update frames for the appearing views
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -192,7 +227,6 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         cell.textLabel?.textColor = UIColor.lightGrayColor()
         cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size: 15)
         
-        let user = User.currentUser()
         
         //testing
         var bgColorView = UIView()
@@ -200,21 +234,24 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
         cell.selectedBackgroundView = bgColorView
         cell.selected = true
         
+
+    
         
-        User.currentUser()!.refreshEvents()
-        let eventsArray = User().eventsForDay(presentDate!)
         
-        let cellDate = User.getDatesWithTimeForRow(indexPath, date: presentDate!)
-        
-        for Event in eventsArray {
-            if (User.isCellWithinEvent(cellDate, startTime: Event.startTime, endTime: Event.endTime)){
-                var bgColorView = UIView()
-                bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
-                cell.selectedBackgroundView = bgColorView
-                cell.selected = true
-            }
-        }
-        
+//        let eventsArray = User().eventsForDay(presentDate!)
+//        print(eventsArray)
+//
+//        let cellDate = User.getDatesWithTimeForRow(indexPath, date: presentDate!)
+//        
+//        for Event in eventsArray {
+//            if (User.isCellWithinEvent(cellDate, startTime: Event.startDate, endTime: Event.endDate)){
+//                var bgColorView = UIView()
+//                bgColorView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.1)
+//                cell.selectedBackgroundView = bgColorView
+//                cell.selected = true
+//            }
+//        }
+//
         
         return cell
     }
@@ -293,6 +330,22 @@ class CalendarViewController: UIViewController, CVCalendarMenuViewDelegate, CVCa
             print(list)
         }
     }
+    
+    func checkUserCredentials() -> Bool {
+        do {
+            try User.logInWithUsername("mike", password: "abcdefg")
+        }
+        catch _ {
+            // Error handling
+        }
+        
+        if (User.currentUser() != nil) {
+            return true
+        }
+        return false
+    }
+    
+    
     
     
 func onSubmitButtonPressed(sender: AnyObject) {

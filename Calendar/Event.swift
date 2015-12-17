@@ -9,12 +9,12 @@
 import Foundation
 import Parse
 
-class Event:PFObject, PFSubclassing {
+class Event: PFObject, PFSubclassing {
     
     @NSManaged var startDate : NSDate
     @NSManaged var endDate : NSDate
 
-    @NSManaged var user : User!
+    @NSManaged var user: User!
     
     static func parseClassName() -> String {
         return "Event"

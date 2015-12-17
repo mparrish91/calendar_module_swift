@@ -10,20 +10,22 @@ import Foundation
 import Parse
 
 
-class User:PFUser {
+class User: PFUser {
     
     //MARK: Properties
     @NSManaged var name: String
     
     var events : [Event]!
+    var test = []
+
     
     func refreshEvents() {
-        //use a PFQuery
         let query = Event.query()!
         query.whereKey("user", equalTo: self)
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 self.events = objects as! [Event]
+                print(self.events)
             NSNotificationCenter.defaultCenter().postNotificationName("eventsUpdated", object: nil)
             }
         }
@@ -39,15 +41,15 @@ class User:PFUser {
     }
     
     func eventsForDay(date: NSDate) -> [Event] {
-//        var daysEvents : [Event] = []
-//        for event in self.events {
-//            if event.startDate.compare(date) == .OrderedDescending && event.startDate.compare(date.dateByAddingTimeInterval(86400)) == .OrderedAscending {
-//                daysEvents.append(event)
-//            }
-//        }
-//        return daysEvents
+        var daysEvents : [Event] = []
+        for event in self.events {
+            if event.startDate.compare(date) == .OrderedDescending && event.startDate.compare(date.dateByAddingTimeInterval(86400)) == .OrderedAscending {
+                daysEvents.append(event)
+            }
+        }
+        return daysEvents
         
-        return self.events.filter({$0.startDate.compare(date) == .OrderedDescending && $0.startDate.compare(date.dateByAddingTimeInterval(86400)) == .OrderedAscending})
+//        return self.events.filter({$0.startDate.compare(date) == .OrderedDescending && $0.startDate.compare(date.dateByAddingTimeInterval(86400)) == .OrderedAscending})
     }
     
     
@@ -72,6 +74,8 @@ class User:PFUser {
             return false
         
     }
+    
+    
 
 
     
